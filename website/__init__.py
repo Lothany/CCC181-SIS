@@ -4,7 +4,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'password'
 
-    from .student import student
-    app.register_blueprint(student, url_prefix='/')
+    from .auth import auth
+    app.register_blueprint(auth, url_prefix='/')
     
     return app
