@@ -6,3 +6,7 @@ sis_env/
 
 # JetBrains IDE specific
 .idea/
+
+# Python cache
+__pycache__/
+website/__pycache__/
