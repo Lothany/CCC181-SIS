@@ -2,10 +2,6 @@ from flask import Blueprint
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/')
-def home():
-    return "<h1>home page</h1>"
-
 @auth.route('/student')
 def student():
     return "<p>student page</p>"
