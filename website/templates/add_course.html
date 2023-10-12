@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Course{% endblock %}
+
+{% block content %}
+<form method = "POST">
+    <h3 align = "center"> Add Course </h3>
+    <div class = "form-group">
+        <label for="courseCode">Course Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseCode"
+            name = "courseCode"
+            placeholder = "BSCS"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="courseName">Course Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseName"
+            name = "courseName"
+            placeholder = "Bachelor of Science in Computer Science"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="college">College</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "college"
+            name = "college"
+            placeholder = "College of Computer Studies"
+        />
+    </div>
+    <br />
+    <button type ="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock%}

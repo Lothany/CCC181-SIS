@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Add New College{% endblock %}
+
+{% block content %}
+<form method = "POST">
+    <h3 align = "center"> Add College </h3>
+    <div class = "form-group">
+        <label for="collegeCode">College Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeCode"
+            name = "collegeCode"
+            placeholder = "CCS"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="collegeName">College Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeName"
+            name = "collegeName"
+            placeholder = "College of Computer Studies"
+        />
+    </div>
+    <br />
+    <button type ="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock%}
