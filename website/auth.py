@@ -14,7 +14,15 @@ def add_student():
 def course():
     return render_template("course.html")
 
+@auth.route('/add_course')
+def add_course():
+    return render_template("add_course.html")
+
 @auth.route('/college')
 def college():
     return render_template("college.html")
+
+@auth.route('/add_college')
+def add_college():
+    return render_template("add_college.html")
     
