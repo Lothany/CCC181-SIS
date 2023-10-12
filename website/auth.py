@@ -6,6 +6,10 @@ auth = Blueprint('auth', __name__)
 def student():
     return render_template("student.html")
 
+@auth.route('/add_student')
+def add_student():
+    return render_template("add_student.html")
+
 @auth.route('/course')
 def course():
     return render_template("course.html")

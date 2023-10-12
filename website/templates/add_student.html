@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Student{% endblock %}
+
+{% block content %}
+<form method = "POST">
+    <h3 alighn = "center"> Add Student </h3>
+    <div class = "form-group">
+        <label for="studentID">Student ID</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "studentID"
+            name = "studentID"
+            placeholder = "Enter Student ID"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="firstName">First Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "firstName"
+            name = "firstName"
+            placeholder = "Enter Student First Name"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="lastName">Last Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "lastName"
+            name = "lastName"
+            placeholder = "Enter Student Last Name"
+        />
+    </div>
+</div>
+<div class = "form-group">
+    <label for="lastName">Last Name</label>
+    <input 
+        type = "text"
+        class = "form-control"
+        id = "lastName"
+        name = "lastName"
+        placeholder = "Enter Student Last Name"
+    />
+</div>
+<div class = "form-group">
+    <label for="course">Course</label>
+    <input 
+        type = "text"
+        class = "form-control"
+        id = "course"
+        name = "course"
+        placeholder = "Enter Course"
+    />
+</div>
+<div class = "form-group">
+    <label for="year">Year</label>
+    <input 
+        type = "integer"
+        class = "form-control"
+        id = "year"
+        name = "year"
+        placeholder = "Enter Student Year Level"
+    />
+</div>
+<div class = "form-group">
+    <label for="gender">Gender</label>
+    <input 
+        type = "text"
+        class = "form-control"
+        id = "gender"
+        name = "gender"
+        placeholder = "Enter Student Gender"
+    />
+</div>
+<br />
+<button type ="submit" class="btn btn-primary">Add Student</button>
+</form>
+
+{% endblock%}
