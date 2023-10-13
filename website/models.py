@@ -6,9 +6,9 @@ class Colleges(object):
         self.collegeName = collegeName
         
     def add(self):
-        cursor = mysql.connector.cursor()
+        cursor = mysql.connection.cursor()
         
-        sql = f"INSERT INTO colleges(collegCode, collegeName) \
+        sql = f"INSERT INTO colleges(collegeCode, collegeName) \
                 VALUES('{self.collegeCode}', '{self.collegeName}')"
             
         cursor.execute(sql)
