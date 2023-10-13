@@ -1,8 +1,15 @@
 from flask import Flask
+from flask_mysql_connector import MySQL
 
 def create_app():
     app = Flask(__name__)
+    
     app.config['SECRET_KEY'] = 'password'
+    
+    app.config['MYSQL_USER'] = "root"
+    app.config['MYSQL_DATABASE'] = "test"
+    
+    mysql = MySQL(app)
 
     from .auth import auth
     from .view import view
