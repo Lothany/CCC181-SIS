@@ -5,9 +5,9 @@ def create_app():
     app = Flask(__name__)
     
     app.config['SECRET_KEY'] = 'password'
-    
     app.config['MYSQL_USER'] = "root"
     app.config['MYSQL_DATABASE'] = "test"
+    app.config['MYSQL_HOST'] = "localhost"
     
     mysql = MySQL(app)
 
