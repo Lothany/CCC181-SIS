@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from website import mysql
 
 auth = Blueprint('auth', __name__)
 
@@ -31,7 +32,11 @@ def college():
 @auth.route('/add_college', methods = ['GET', 'POST'])
 def add_college():
     if request.method == 'POST':
-        data = request.form
-        print (data)
+        college_data = request.form
+        college = College(
+            college_data['collegeCode'],
+            college_data['collegeName']
+        )
+        college.add()
     return render_template("add_college.html")
     
