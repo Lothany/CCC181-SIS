@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_mysql_connector import MySQL
 
-mysql = MySQL(app)
-
 def create_app():
     app = Flask(__name__)
     
@@ -11,8 +9,6 @@ def create_app():
     app.config['MYSQL_PASSWORD'] = "password123"
     app.config['MYSQL_DATABASE'] = "test"
     app.config['MYSQL_HOST'] = "localhost"
-    
-    mysql = MySQL(app)
     
     mysql = MySQL(app)
     mysql.init_app(app)
