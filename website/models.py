@@ -14,10 +14,15 @@ class Colleges(object):
         cursor.execute(sql)
         mysql.connection.commit()
         
-    def get_data():
-        if not mysql.connection.is_connected():
-            print("Database connection is not established")
-            return "Database connection is not established"
-        else:
-            print ("success")
-            return "success"
+    #@classmethod
+    def get_data(cls):
+        cursor = mysql.connection.cursor()
+        try:
+            cursor.execute("SELECT * FROM colleges")
+            colleges = cursor.fetchall()
+            return colleges
+        except Exception as e:
+            print(f"Error fetching college data: {str(e)}")
+            return None
+        finally:
+            cursor.close()

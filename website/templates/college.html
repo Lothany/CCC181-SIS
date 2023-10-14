@@ -3,8 +3,28 @@
 {% block title %}College{% endblock %}
 
 {% block content %}
-<h1>College Page</h1>
+    <h1>College Page</h1>
 
-<a class="btn btn-primary" id="addCollege" href="/add_college">Add College</a>
+    <button class="btn btn-primary" id="colleges">Get College Data</button>
 
+    <h2><br>College Data</h2>
+
+    <div class="row mt-2">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for college in colleges %}
+                <tr>
+                    <td>{{college[0]}}</td>
+                    <td>{{college[1]}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock%}
