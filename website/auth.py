@@ -33,7 +33,7 @@ def college():
 def add_college():
     if request.method == 'POST':
         college_data = request.form
-        college = College(
+        college = Colleges(
             college_data['collegeCode'],
             college_data['collegeName']
         )

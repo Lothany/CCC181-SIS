@@ -12,6 +12,9 @@ def create_app():
     app.config['MYSQL_DATABASE'] = "test"
     app.config['MYSQL_HOST'] = "localhost"
     
+    mysql = MySQL(app)
+    
+    mysql = MySQL(app)
     mysql.init_app(app)
 
     from .auth import auth
