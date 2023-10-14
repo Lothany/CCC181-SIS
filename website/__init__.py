@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_mysql_connector import MySQL
 
 def create_app():
     app = Flask(__name__)
