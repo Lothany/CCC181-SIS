@@ -13,3 +13,11 @@ class Colleges(object):
             
         cursor.execute(sql)
         mysql.connection.commit()
+        
+    def get_data():
+        if not mysql.connection.is_connected():
+            print("Database connection is not established")
+            return "Database connection is not established"
+        else:
+            print ("success")
+            return "success"
