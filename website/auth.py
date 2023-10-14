@@ -32,11 +32,8 @@ def college():
 @auth.route('/add_college', methods = ['GET', 'POST'])
 def add_college():
     if request.method == 'POST':
-        college_data = request.form
-        college = Colleges(
-            college_data['collegeCode'],
-            college_data['collegeName']
-        )
+        data = request.form
+        print (data)
         college.add()
     return render_template("add_college.html")
     
