@@ -22,17 +22,17 @@ def add_student():
 def course():
     return render_template("course.html")
 
+@view.route('/college', methods=['GET', 'POST'])
+def college():
+    #colleges = Colleges.get_data()
+    #return render_template("college.html", colleges=colleges)
+    return render_template("college.html")
 @view.route('/add_course', methods = ['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
         data = request.form
         print (data)
     return render_template("add_course.html")
-
-@view.route('/college', methods=['GET', 'POST'])
-def college():
-    colleges = Colleges.get_data()
-    return render_template("college.html", colleges=colleges)
 
 @view.route('/add_college', methods = ['GET', 'POST'])
 def add_college():
