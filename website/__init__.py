@@ -19,10 +19,16 @@ def create_app():
     
     mysql.init_app(app)
     
-    from .view import view
-    app.register_blueprint(view, url_prefix='/')
+    #from .view import view
+    #app.register_blueprint(view, url_prefix='/')
     
-    #from .controller import college_bp
-    #app.register_blueprint(college_bp, url_prefix='/')
+    from .student import student_bp
+    app.register_blueprint(student_bp, url_prefix='/')
+    
+    from .course import course_bp
+    app.register_blueprint(course_bp, url_prefix='/')
+    
+    from .college import college_bp
+    app.register_blueprint(college_bp, url_prefix='/')
     
     return app
