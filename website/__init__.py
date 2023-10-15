@@ -7,8 +7,6 @@ mysql = MySQL()
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'password'
-
-    from .view import view
     
     app.config.from_mapping(
         SECRET_KEY=SECRET_KEY,
@@ -21,6 +19,10 @@ def create_app():
     
     mysql.init_app(app)
     
+    from .view import view
     app.register_blueprint(view, url_prefix='/')
+    
+    #from .controller import college_bp
+    #app.register_blueprint(college_bp, url_prefix='/')
     
     return app

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from .models import Colleges
 
 view = Blueprint('view', __name__)
 
@@ -28,9 +29,10 @@ def add_course():
         print (data)
     return render_template("add_course.html")
 
-@view.route('/college')
+@view.route('/college', methods=['GET', 'POST'])
 def college():
-    return render_template("college.html")
+    colleges = Colleges.get_data()
+    return render_template("college.html", colleges=colleges)
 
 @view.route('/add_college', methods = ['GET', 'POST'])
 def add_college():

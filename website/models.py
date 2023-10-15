@@ -15,14 +15,9 @@ class Colleges(object):
         mysql.connection.commit()
         
     #@classmethod
-    def get_data(cls):
+    def get_data():
         cursor = mysql.connection.cursor()
-        try:
-            cursor.execute("SELECT * FROM colleges")
-            colleges = cursor.fetchall()
-            return colleges
-        except Exception as e:
-            print(f"Error fetching college data: {str(e)}")
-            return None
-        finally:
-            cursor.close()
+        cursor.execute("SELECT * FROM colleges")
+        colleges = cursor.fetchall()
+        print("SQL acquired")
+        return colleges
