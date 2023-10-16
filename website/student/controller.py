@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request
-from . import models
 
 student_bp = Blueprint('student', __name__)
 
 @student_bp.route('/student')
+@student_bp.route('/')
 def view_student():
     return render_template("student.html")
 
