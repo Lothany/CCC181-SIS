@@ -25,10 +25,10 @@ def create_app():
     from .student.controller import student_bp
     app.register_blueprint(student_bp)
     
-    #from .course import course_bp
-    #app.register_blueprint(course_bp, url_prefix='/')
+    from .course.controller import course_bp
+    app.register_blueprint(course_bp)
     
-    #from .college import college_bp
-    #app.register_blueprint(college_bp, url_prefix='/')
+    from .college.controller import college_bp
+    app.register_blueprint(college_bp)
     
     return app
