@@ -10,6 +10,9 @@ def home():
 def view_student():
     return render_template("student.html")
 
-@student_bp.route('/add_student')
+@student_bp.route('/add_student', methods = ['GET', 'POST'])
 def add_student():
+    if request.method == 'POST':
+        data = request.form
+        print (data)
     return render_template("add_student.html")
