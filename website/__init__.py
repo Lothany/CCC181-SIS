@@ -17,9 +17,7 @@ def create_app():
     )
     
     mysql.init_app(app)
-    
-    #from .view import view
-    #app.register_blueprint(view, url_prefix='/')
+
     
     from .student.controller import student_bp
     app.register_blueprint(student_bp, url_prefix="/")
