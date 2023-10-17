@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template, request
+import website.models as models
 
 college_bp = Blueprint('college',__name__)
 
 @college_bp.route('/college')
 def view_college():
-    return render_template("college.html")
+    colleges = models.Colleges.list()
+    return render_template("college.html", colleges = colleges)
 
 #@college_bp.route('/add_college')
 #def add_college():

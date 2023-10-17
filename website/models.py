@@ -5,19 +5,18 @@ class Colleges(object):
         self.collegeCode = collegeCode
         self.collegeName = collegeName
         
-    def add(self):
-        cursor = mysql.connection.cursor()
+    #def add(self):
+        #cursor = mysql.connection.cursor()
         
-        sql = f"INSERT INTO colleges(collegeCode, collegeName) \
-                VALUES('{self.collegeCode}', '{self.collegeName}')"
+        #sql = f"INSERT INTO colleges(collegeCode, collegeName) \
+        #        VALUES('{self.collegeCode}', '{self.collegeName}')"
             
-        cursor.execute(sql)
-        mysql.connection.commit()
+        #cursor.execute(sql)
+        #mysql.connection.commit()
         
     #@classmethod
-    def get_data():
+    def list():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM colleges")
-        colleges = cursor.fetchall()
-        print("SQL acquired")
-        return colleges
+        full_list = cursor.fetchall()
+        return full_list
