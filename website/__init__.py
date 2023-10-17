@@ -6,7 +6,6 @@ mysql = MySQL()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'password'
     
     app.config.from_mapping(
         SECRET_KEY=SECRET_KEY,
