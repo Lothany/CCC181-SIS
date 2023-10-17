@@ -10,3 +10,5 @@ sis_env/
 # Python cache
 __pycache__/
 website/__pycache__/
+
+sis181.sql
