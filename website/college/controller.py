@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request
-from . import models
 
 college_bp = Blueprint('college',__name__)
 
