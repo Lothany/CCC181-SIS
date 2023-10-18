@@ -29,12 +29,13 @@
                         <td>{{ college[0] }}</td>
                         <td>{{ college[1] }}</td>
                         <td>
-                            <form action="/college/edit{{ college[0] }}" method="get" style="display: inline;">
+                            <form action="/edit_college/{{ college[0] }}" method="get" style="display: inline;">
                                 <button class="btn btn-warning" type="submit">Edit</button>
                             </form>
-                            <form action="/college/delete{{ college[0] }}" method="post" style="display: inline;">
+                            <form action="/college/delete" method="post" style="display: inline;">
+                                <input type="hidden" name="collegeCode" value="{{ college[0] }}">
                                 <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
+                            </form>                            
                         </td>
                     </tr>
                 {% endfor %}

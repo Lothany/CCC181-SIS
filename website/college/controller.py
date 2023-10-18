@@ -27,11 +27,12 @@ def add_college():
             return redirect ("/college")
     return render_template("add_college.html")
 
-@college_bp.route('/college/delete', methods = ['GET', 'POST'])
-def delete_college(collegeCode):
+@college_bp.route('/college/delete', methods=['POST'])
+def delete_college():
     if request.method == 'POST':
+        collegeCode = request.form.get('collegeCode')
         college = models.Colleges(collegeCode)
         college.delete()
-        flash('College deleted succesfully!', category = 'success')
-        return redirect ("/college")
-    return render_template("college.html")
+        flash('College deleted successfully!', category='success')
+        return redirect('/college')
+    return render_template("delete_college.html")
