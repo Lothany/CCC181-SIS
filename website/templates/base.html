@@ -33,11 +33,12 @@
           </div>
 
           <div class="ml-auto">
-            <form class="form-inline", action="/college/search" method="GET">
-              <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline" action="{% if request.path == '/college' %}/college/search{% elif request.path == '/student' %}/student/search{% elif request.path == '/course' %}/course/search{% endif %}" method="GET">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-          </div>
+        </div>
+        
               
           </nav>
         <br><br>
