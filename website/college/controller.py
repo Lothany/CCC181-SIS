@@ -18,8 +18,15 @@ def add_college():
         data = request.form
         collegeCode = data['collegeCode']
         collegeName = data['collegeName']
-        college = models.Colleges(collegeCode, collegeName)
-        college.add()
-        #return 'added succesfully'
-        return redirect ("/college")
+        if len(collegeCode) < 1:
+            flash('Please enter college code', category = 'error')
+            return render_template("add_college.html")
+        elif len(collegeName) < 1:
+            flash('Please enter college name', category = 'error')
+            return render_template("add_college.html")
+        else:
+            college = models.Colleges(collegeCode, collegeName)
+            college.add()
+            flash('College added succesfully!', category = 'success')
+            return redirect ("/college")
     return render_template("add_college.html")
