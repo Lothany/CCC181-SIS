@@ -8,7 +8,7 @@ def view_college():
     colleges = models.Colleges.list()
     return render_template("college.html", colleges = colleges)
 
-@college_bp.route('/add_college', methods = ['GET', 'POST'])
+@college_bp.route('/college/add', methods = ['GET', 'POST'])
 def add_college():
     if request.method == 'POST':
         data = request.form
@@ -26,3 +26,12 @@ def add_college():
             flash('College added succesfully!', category = 'success')
             return redirect ("/college")
     return render_template("add_college.html")
+
+@college_bp.route('/college/delete', methods = ['GET', 'POST'])
+def delete_college(collegeCode):
+    if request.method == 'POST':
+        college = models.Colleges(collegeCode)
+        college.delete()
+        flash('College deleted succesfully!', category = 'success')
+        return redirect ("/college")
+    return render_template("college.html")

@@ -13,7 +13,7 @@ class Colleges(object):
         cursor.execute(sql)
         mysql.connection.commit()
     
-    #def delete(self):
+    def delete(self):
         cursor = mysql.connection.cursor()
         sql = f"DELETE FROM colleges WHERE collegeCode = '{self.collegeCode}'"
         cursor.execute(sql)

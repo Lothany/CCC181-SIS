@@ -11,7 +11,7 @@
                     <h2>Colleges</h2>
                 </div>
                 <div class="col">
-                    <a class="btn btn-primary float-right" id="addCollege" href="/add_college">Add College</a>
+                    <a class="btn btn-primary float-right" id="addCollege" href="/college/add">Add College</a>
                 </div>
             </div>
             
@@ -29,10 +29,10 @@
                         <td>{{ college[0] }}</td>
                         <td>{{ college[1] }}</td>
                         <td>
-                            <form action="/edit_college/{{ college[0] }}" method="get" style="display: inline;">
+                            <form action="/college/edit{{ college[0] }}" method="get" style="display: inline;">
                                 <button class="btn btn-warning" type="submit">Edit</button>
                             </form>
-                            <form action="/delete_college/{{ college[0] }}" method="post" style="display: inline;">
+                            <form action="/college/delete{{ college[0] }}" method="post" style="display: inline;">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </td>
