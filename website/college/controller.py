@@ -16,14 +16,16 @@ def add_college():
         collegeName = data['collegeName']
         if len(collegeCode) < 1:
             flash('Please enter college code', category = 'error')
-            return render_template("add_college.html")
         elif len(collegeName) < 1:
             flash('Please enter college name', category = 'error')
-            return render_template("add_college.html")
         else:
             college = models.Colleges(collegeCode, collegeName)
-            college.add()
-            flash('College added succesfully!', category = 'success')
+            exists = college.add()
+            if exists == "duplicate":
+                flash('College with same code already exists!', category = 'error')
+                return render_template("add_college.html")
+            else:    
+                flash('College added succesfully!', category = 'success')
             return redirect ("/college")
     return render_template("add_college.html")
 
@@ -35,9 +37,12 @@ def edit_college():
         originalCode = request.args.get('collegeCode')  # Get the original code from the URL parameters
 
         college = models.Colleges(collegeCode, collegeName)
-        college.edit(originalCode)  # Pass the original code to the edit method
-        flash('College edited successfully!', category='success')
-        return redirect('/college')
+        exists = college.edit(originalCode)  # Pass the original code to the edit method
+        if exists == "duplicate":
+            flash('College with the same code already exists!', category='error')
+        else:   
+            flash('College edited successfully!', category='success')
+            return redirect('/college')
 
     collegeCode = request.args.get('collegeCode')
     collegeName = request.args.get('collegeName')

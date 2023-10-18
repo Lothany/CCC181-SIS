@@ -7,14 +7,19 @@ class Colleges(object):
         
     def add(self):
         cursor = mysql.connection.cursor()
+        if self.exists(self.collegeCode):
+            return "duplicate"
+        
         sql = f"INSERT INTO colleges(collegeCode, collegeName) \
                 VALUES('{self.collegeCode}', '{self.collegeName}')"
-            
         cursor.execute(sql)
         mysql.connection.commit()
     
     def edit(self, originalCode):
         cursor = mysql.connection.cursor()
+        if self.exists(originalCode):
+            return "duplicate"
+        
         sql = f"UPDATE colleges SET collegeCode = '{self.collegeCode}', collegeName = '{self.collegeName}' WHERE collegeCode = '{originalCode}'"
         cursor.execute(sql)
         mysql.connection.commit()
@@ -32,3 +37,11 @@ class Colleges(object):
         cursor.execute("SELECT * FROM colleges")
         full_list = cursor.fetchall()
         return full_list
+    
+    def exists(self, originalCode):
+        cursor = mysql.connection.cursor()
+        if originalCode:
+            cursor.execute("SELECT 1 FROM colleges WHERE collegeCode = %s AND collegeCode != %s", (self.collegeCode, originalCode))
+        else:
+            cursor.execute("SELECT 1 FROM colleges WHERE collegeCode = %s", (self.collegeCode,))
+        return cursor.fetchone() is not None
