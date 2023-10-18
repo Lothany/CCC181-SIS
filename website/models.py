@@ -7,13 +7,18 @@ class Colleges(object):
         
     def add(self):
         cursor = mysql.connection.cursor()
-        
         sql = f"INSERT INTO colleges(collegeCode, collegeName) \
                 VALUES('{self.collegeCode}', '{self.collegeName}')"
             
         cursor.execute(sql)
         mysql.connection.commit()
-        
+    
+    #def delete(self):
+        cursor = mysql.connection.cursor()
+        sql = f"DELETE FROM colleges WHERE collegeCode = '{self.collegeCode}'"
+        cursor.execute(sql)
+        mysql.connection.commit()
+          
     #@classmethod
     def list():
         cursor = mysql.connection.cursor()
