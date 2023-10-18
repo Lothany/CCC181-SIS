@@ -5,14 +5,14 @@ class Colleges(object):
         self.collegeCode = collegeCode
         self.collegeName = collegeName
         
-    #def add(self):
-        #cursor = mysql.connection.cursor()
+    def add(self):
+        cursor = mysql.connection.cursor()
         
-        #sql = f"INSERT INTO colleges(collegeCode, collegeName) \
-        #        VALUES('{self.collegeCode}', '{self.collegeName}')"
+        sql = f"INSERT INTO colleges(collegeCode, collegeName) \
+                VALUES('{self.collegeCode}', '{self.collegeName}')"
             
-        #cursor.execute(sql)
-        #mysql.connection.commit()
+        cursor.execute(sql)
+        mysql.connection.commit()
         
     #@classmethod
     def list():

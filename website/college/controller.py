@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, flash
 import website.models as models
 
 college_bp = Blueprint('college',__name__)
@@ -16,5 +16,10 @@ def view_college():
 def add_college():
     if request.method == 'POST':
         data = request.form
-        print (data)
+        collegeCode = data['collegeCode']
+        collegeName = data['collegeName']
+        college = models.Colleges(collegeCode, collegeName)
+        college.add()
+        #return 'added succesfully'
+        return redirect ("/college")
     return render_template("add_college.html")
