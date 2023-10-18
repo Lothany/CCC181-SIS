@@ -26,7 +26,7 @@ def add_college():
                 return render_template("add_college.html")
             else:    
                 flash('College added succesfully!', category = 'success')
-            return redirect ("/college")
+                return redirect ("/college")
     return render_template("add_college.html")
 
 @college_bp.route('/college/edit', methods=['GET', 'POST'])
@@ -34,10 +34,10 @@ def edit_college():
     if request.method == 'POST':
         collegeCode = request.form.get('collegeCode')
         collegeName = request.form.get('collegeName')
-        originalCode = request.args.get('collegeCode')  # Get the original code from the URL parameters
+        originalCode = request.args.get('collegeCode')
 
         college = models.Colleges(collegeCode, collegeName)
-        exists = college.edit(originalCode)  # Pass the original code to the edit method
+        exists = college.edit(originalCode)
         if exists == "duplicate":
             flash('College with the same code already exists!', category='error')
         else:   

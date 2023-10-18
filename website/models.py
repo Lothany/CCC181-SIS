@@ -7,7 +7,7 @@ class Colleges(object):
         
     def add(self):
         cursor = mysql.connection.cursor()
-        if self.exists(self.collegeCode):
+        if self.exists(None):
             return "duplicate"
         
         sql = f"INSERT INTO colleges(collegeCode, collegeName) \
