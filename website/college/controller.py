@@ -27,17 +27,22 @@ def add_college():
             return redirect ("/college")
     return render_template("add_college.html")
 
-@college_bp.route('/college/edit', methods = ['GET', 'POST'])
+@college_bp.route('/college/edit', methods=['GET', 'POST'])
 def edit_college():
     if request.method == 'POST':
         collegeCode = request.form.get('collegeCode')
-        college = models.Colleges(collegeCode)
-        college.edit()
-        flash('College editted successfully!', category='success')
+        collegeName = request.form.get('collegeName')
+        originalCode = request.args.get('collegeCode')  # Get the original code from the URL parameters
+
+        college = models.Colleges(collegeCode, collegeName)
+        college.edit(originalCode)  # Pass the original code to the edit method
+        flash('College edited successfully!', category='success')
         return redirect('/college')
+
     collegeCode = request.args.get('collegeCode')
     collegeName = request.args.get('collegeName')
     return render_template("edit_college.html", collegeCode=collegeCode, collegeName=collegeName)
+
 
 @college_bp.route('/college/delete', methods=['POST'])
 def delete_college():

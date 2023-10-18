@@ -13,12 +13,13 @@ class Colleges(object):
         cursor.execute(sql)
         mysql.connection.commit()
     
-    def edit(self):
+    def edit(self, originalCode):
         cursor = mysql.connection.cursor()
-        sql = f"UPDATE colleges SET collegeName = '{self.collegeName}' WHERE collegeCode = '{self.collegeCode}'"
+        sql = f"UPDATE colleges SET collegeCode = '{self.collegeCode}', collegeName = '{self.collegeName}' WHERE collegeCode = '{originalCode}'"
         cursor.execute(sql)
-        mysql.connection.commit()     
+        mysql.connection.commit()
 
+        
     def delete(self):
         cursor = mysql.connection.cursor()
         sql = f"DELETE FROM colleges WHERE collegeCode = '{self.collegeCode}'"
