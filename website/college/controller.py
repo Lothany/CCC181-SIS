@@ -58,3 +58,9 @@ def delete_college():
         flash('College deleted successfully!', category='success')
         return redirect('/college')
     return render_template("delete_college.html")
+
+@college_bp.route('/college/search', methods=['GET', 'POST'])
+def search_college():
+    query = request.args.get('query')
+    colleges = models.Colleges.search(query)
+    return render_template("college.html", colleges=colleges)
