@@ -53,3 +53,19 @@ class Colleges(object):
         cursor.execute(sql)
         search_results = cursor.fetchall()
         return search_results
+
+class Students(object):
+    def __init__(self, studentID=None, firstName=None, lastName=None, course=None, yearLevel=None, gender=None):
+        self.studentID = studentID
+        self.firstName = firstName
+        self.lastName = lastName
+        self.course = course
+        self.yearLevel = yearLevel
+        self.gender = gender
+        
+    def list():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM students")
+        full_list = cursor.fetchall()
+        return full_list
+    

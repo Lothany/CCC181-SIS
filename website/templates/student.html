@@ -3,8 +3,56 @@
 {% block title %}Student{% endblock %}
 
 {% block content %}
-<h1>Student Page</h1>
+    <div class="row mt-2">
+        <div class="col">
+            <h2>Students</h2>
+        </div>
+        <div class="col text-right">
+            <a class="btn btn-primary" id="addStudent" href="/student/add">Add Student</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Course</th>
+            <th>Year</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student[0] }}</td>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+                <td>
+                    <form action="/student/edit" method="get" style="display: inline;">
+                        <button class="btn btn-warning" type="submit">Edit</button>
+                    </form>
+                    <form action="/student/delete" method="post" style="display: inline;">
+                        <button class="btn btn-danger" type="button" onclick="confirmDelete()">Delete</button>
+                    </form>
 
-<a class="btn btn-primary" id="addStudent" href="/add_student">Add Student</a>
+                    <script>
+                        function confirmDelete() {
+                            if (window.confirm("Are you sure you want to delete this student?")) {
+                                // If the user confirms, submit the form
+                                document.querySelector('form[action="/student/delete"]').submit();
+                            }
+                        }
+                    </script>
 
-{% endblock%}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
