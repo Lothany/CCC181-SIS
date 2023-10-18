@@ -3,28 +3,44 @@
 {% block title %}College{% endblock %}
 
 {% block content %}
-    <h1>College Page</h1>
-
-    <a class="btn btn-primary" id="addCollege" href="/add_college">Add College</a>
-
-    <h2><br>College Data</h2>
 
     <div class="row mt-2">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for college in colleges %}
+        <div class="col-8 offset-2"> <!-- Center the table with padding -->
+            <div class="row">
+                <div class="col">
+                    <h2>Colleges</h2>
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary float-right" id="addCollege" href="/add_college">Add College</a>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>{{college[0]}}</td>
-                    <td>{{college[1]}}</td>
+                    <th>Code</th>
+                    <th style="width: 60%;">Name</th> <!-- Set a specific width for the "Name" column -->
+                    <th>Action</th> <!-- New column for actions -->
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for college in colleges %}
+                    <tr>
+                        <td>{{ college[0] }}</td>
+                        <td>{{ college[1] }}</td>
+                        <td>
+                            <form action="/edit_college/{{ college[0] }}" method="get" style="display: inline;">
+                                <button class="btn btn-warning" type="submit">Edit</button>
+                            </form>
+                            <form action="/delete_college/{{ college[0] }}" method="post" style="display: inline;">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-{% endblock%}
+</div>
+{% endblock %}
