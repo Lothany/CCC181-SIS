@@ -29,7 +29,9 @@
                         <td>{{ college[0] }}</td>
                         <td>{{ college[1] }}</td>
                         <td>
-                            <form action="/edit_college/{{ college[0] }}" method="get" style="display: inline;">
+                            <form action="/college/edit" method="get" style="display: inline;">
+                                <input type="hidden" name="collegeCode" value="{{ college[0] }}">
+                                <input type="hidden" name="collegeName" value="{{ college[1] }}">
                                 <button class="btn btn-warning" type="submit">Edit</button>
                             </form>
                             <form action="/college/delete" method="post" style="display: inline;">

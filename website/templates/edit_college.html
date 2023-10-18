@@ -3,31 +3,31 @@
 {% block title %}Edit College Details{% endblock %}
 
 {% block content %}
-<form method = "POST">
-    <h3 align = "center"> Edit College </h3>
-    <div class = "form-group">
+<form method="POST">
+    <h3 align="center">Edit College</h3>
+    <div class="form-group">
         <label for="collegeCode">College Code</label>
         <input 
-            type = "text"
-            class = "form-control"
-            id = "collegeCode"
-            name = "collegeCode"
-            placeholder = "CCS"
+            type="text"
+            class="form-control"
+            id="collegeCode"
+            name="collegeCode"
+            value="{{ collegeCode }}"
         />
     </div>
-    <div class = "form-group">
+    <div class="form-group">
         <label for="collegeName">College Name</label>
         <input 
-            type = "text"
-            class = "form-control"
-            id = "collegeName"
-            name = "collegeName"
-            placeholder = "College of Computer Studies"
+            type="text"
+            class="form-control"
+            id="collegeName"
+            name="collegeName"
+            value="{{ collegeName }}"
         />
     </div>
+    
     <br />
-    <button type ="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
     <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
 </form>
-
-{% endblock%}
+{% endblock %}
