@@ -1,12 +1,14 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, flash
+import website.models as models
 
 course_bp = Blueprint('course',__name__)
 
 @course_bp.route('/course')
 def view_course():
-    return render_template("course.html")
+    courses = models.Courses.list()
+    return render_template("course.html", courses = courses)
 
-@course_bp.route('/add_course', methods = ['GET', 'POST'])
+@course_bp.route('/course/add', methods = ['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
         data = request.form

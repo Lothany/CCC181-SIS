@@ -69,3 +69,15 @@ class Students(object):
         full_list = cursor.fetchall()
         return full_list
     
+class Courses(object):
+    def __init__(self, courseCode=None, courseName=None, college=None):
+        self.courseCode = courseCode
+        self.courseName = courseName
+        self.college = college
+        
+    def list():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM courses")
+        full_list = cursor.fetchall()
+        return full_list
+    
