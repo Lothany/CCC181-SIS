@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Course{% endblock %}
+
+{% block content %}
+<form method = "POST">
+    <h3 align = "center"> Edit Course </h3>
+    <div class = "form-group">
+        <label for="courseCode">Course Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseCode"
+            name = "courseCode"
+            value="{{ courseCode }}"
+        />
+    </div>
+    <div class = "form-group">
+        <label for="courseName">Course Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseName"
+            name = "courseName"
+            value="{{ courseName }}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="college">College</label>
+        <select class="form-control" id="college" name="college">
+            <option value= "college" selected>{{college}}</option>
+            {% for c in collegeList %}
+            {% if c.collegeName != college %}
+                <option value="{{ c.collegeName }}">{{ c.collegeName }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    
+    
+    <br />
+    <button type ="submit" class="btn btn-primary">Edit</button>
+    <a href="/course" class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock%}
