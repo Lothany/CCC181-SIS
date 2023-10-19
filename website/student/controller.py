@@ -41,16 +41,12 @@ def add_student():
             flash('Please choose gender', category='error')
         else:
             student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender)
-            student.add()
-            flash('Student added successfully!', category='success')
-            return redirect('/student')
-        
-            #exists = student.add()
-            #if exists == "duplicate":
-            #    flash('Course with the same code already exists!', category='error')
-            #else:
-            #    flash('Course added successfully!', category='success')
-            #    return redirect('/course')
+            exists = student.add()
+            if exists == "duplicate":
+                flash('Student ID is already taken', category='error')
+            else:
+                flash('Student added successfully!', category='success')
+                return redirect('/student')
     
     courses = models.Students.list_courses()
     return render_template('add_student.html', courses=courses)
