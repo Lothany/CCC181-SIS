@@ -78,7 +78,24 @@ class Students(object):
                 VALUES('{self.studentID}', '{self.firstName}', '{self.lastName}', '{self.courseCode}', '{self.yearLevel}', '{self.gender}')"
         cursor.execute(sql)
         mysql.connection.commit()
+    
+    def edit(self, trueStudent):
+        cursor = mysql.connection.cursor()
+        #if self.exists(trueCourse):
+        #    return "duplicate"
         
+        sql = f"UPDATE students SET " \
+            f"studentID = '{self.studentID}', " \
+            f"firstName = '{self.firstName}', " \
+            f"lastName = '{self.lastName}' " \
+            f"courseCode = '{self.courseCode}', " \
+            f"yearLevel = '{self.yearLevel}', " \
+            f"gender = '{self.gender}' " \
+            f"WHERE courseCode = '{trueStudent}'"
+
+        cursor.execute(sql)
+        mysql.connection.commit()
+      
     @classmethod
     def list_courses(cls):
         cursor = mysql.connection.cursor(dictionary=True)

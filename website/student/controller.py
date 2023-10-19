@@ -54,3 +54,44 @@ def add_student():
     
     courses = models.Students.list_courses()
     return render_template('add_student.html', courses=courses)
+
+@student_bp.route('/student/edit', methods = ['GET', 'POST'])
+def edit_student():
+    if request.method == 'POST':
+        studentID = request.form.get('studentID')
+        firstName = request.form.get('firstName')
+        lastName = request.form.get('lastName')
+        courseCode = request.form.get('courseCode')
+        yearLevel = request.form.get('courseName')
+        gender = request.form.get('gender')
+        trueStudent = request.args.get('studentID')
+        
+        student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender)
+        student.edit(trueStudent)
+        flash('Student edited successfully!', category='success')
+        return redirect('/student')
+
+        #exists = student.edit(trueStudent)
+        #if exists == "duplicate":
+        #    flash('Student ID is already taken', category='error')
+       # else:   
+        #    flash('Student edited successfully!', category='success')
+        #    return redirect('/student')
+
+    studentID = request.args.get('studentID')
+    firstName = request.args.get('firstName')
+    lastName = request.args.get('lastName')
+    course = request.args.get('courseCode')
+    yearLevel = request.args.get('yearLevel')
+    gender = request.args.get('gender')
+    courseList = models.Students.list_courses()
+    return render_template(
+        "edit_student.html",
+        studentID = studentID,
+        firstName = firstName,
+        lastName = lastName,
+        course = course,
+        yearLevel = yearLevel,
+        gender = gender,
+        courseList = courseList
+    )
