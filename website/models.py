@@ -112,6 +112,12 @@ class Students(object):
             cursor.execute("SELECT 1 FROM students WHERE studentID = %s", (self.studentID,))
         return cursor.fetchone() is not None
     
+    def delete(self):
+        cursor = mysql.connection.cursor()
+        sql = f"DELETE FROM students WHERE studentID = '{self.studentID}'"
+        cursor.execute(sql)
+        mysql.connection.commit()
+    
     
 class Courses(object):
     def __init__(self, courseCode=None, courseName=None, collegeCode=None):

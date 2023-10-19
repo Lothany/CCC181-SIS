@@ -86,13 +86,6 @@ def edit_student():
             flash('Student edited successfully!', category='success')
             return redirect('/student')
 
-        #exists = student.edit(trueStudent)
-        #if exists == "duplicate":
-        #    flash('Student ID is already taken', category='error')
-       # else:   
-        #    flash('Student edited successfully!', category='success')
-        #    return redirect('/student')
-
     studentID = request.args.get('studentID')
     firstName = request.args.get('firstName')
     lastName = request.args.get('lastName')
@@ -110,3 +103,12 @@ def edit_student():
         gender = gender,
         courses = courses
     )
+    
+@student_bp.route('/student/delete', methods=['POST'])
+def delete_student():
+    if request.method == 'POST':
+        studentID = request.form.get('studentID')
+        student = models.Students(studentID)
+        student.delete()
+        flash('Student deleted successfully!', category='success')
+    return redirect('/student')
