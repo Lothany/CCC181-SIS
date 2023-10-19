@@ -83,8 +83,8 @@ class Courses(object):
     
     def add(self):
         cursor = mysql.connection.cursor()
-        # if self.exists(None):
-        #     return "duplicate"
+        if self.exists(None):
+            return "duplicate"
 
         sql = f"INSERT INTO courses(courseCode, courseName, college) \
                 VALUES('{self.courseCode}', '{self.courseName}', '{self.college}')"
@@ -97,4 +97,12 @@ class Courses(object):
         cursor.execute("SELECT * FROM colleges")
         colleges = cursor.fetchall()
         return colleges
+    
+    def exists(self, trueCourse):
+        cursor = mysql.connection.cursor()
+        if trueCourse:
+            cursor.execute("SELECT 1 FROM courses WHERE courseCode = %s AND courseCode != %s", (self.courseCode, trueCourse))
+        else:
+            cursor.execute("SELECT 1 FROM courses WHERE courseCode = %s", (self.courseCode,))
+        return cursor.fetchone() is not None
     

@@ -22,10 +22,12 @@ def add_course():
             flash('Please enter course name', category = 'error')
         else:
             course = models.Courses(courseCode, courseName, college)
-            course.add()
-            flash('Course added succesfully!', category = 'success')
-            return redirect ("/course")
+            exists = course.add()
+            if exists == "duplicate":
+                flash('Course with same code already exists!', category = 'error')
+            else:
+                flash('Course added succesfully!', category = 'success')
+                return redirect ("/course")
     
     colleges = models.Courses.list_colleges()
-
     return render_template("add_course.html", colleges=colleges)
