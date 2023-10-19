@@ -84,7 +84,7 @@ def edit_student():
     course = request.args.get('courseCode')
     yearLevel = request.args.get('yearLevel')
     gender = request.args.get('gender')
-    courseList = models.Students.list_courses()
+    courses = models.Students.list_courses()
     return render_template(
         "edit_student.html",
         studentID = studentID,
@@ -93,5 +93,5 @@ def edit_student():
         course = course,
         yearLevel = yearLevel,
         gender = gender,
-        courseList = courseList
+        courses = courses
     )
