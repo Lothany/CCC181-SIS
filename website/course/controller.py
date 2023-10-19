@@ -53,3 +53,12 @@ def edit_course():
     college = request.args.get('college')
     collegeList = models.Courses.list_colleges()
     return render_template("edit_course.html", courseCode=courseCode, courseName=courseName, college=college, collegeList = collegeList)
+
+@course_bp.route('/course/delete', methods=['POST'])
+def delete_course():
+    if request.method == 'POST':
+        courseCode = request.form.get('courseCode')
+        course = models.Courses(courseCode)
+        course.delete()
+        flash('Course deleted successfully!', category='success')
+    return redirect('/course')

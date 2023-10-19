@@ -99,6 +99,12 @@ class Courses(object):
         sql = f"UPDATE courses SET courseCode = '{self.courseCode}', courseName = '{self.courseName}', college = '{self.college}' WHERE courseCode = '{trueCourse}'"
         cursor.execute(sql)
         mysql.connection.commit()
+        
+    def delete(self):
+        cursor = mysql.connection.cursor()
+        sql = f"DELETE FROM courses WHERE courseCode = '{self.courseCode}'"
+        cursor.execute(sql)
+        mysql.connection.commit()
 
     @classmethod
     def list_colleges(cls):
