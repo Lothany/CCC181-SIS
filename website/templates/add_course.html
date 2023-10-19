@@ -26,11 +26,11 @@
         />
     </div>
     <div class="form-group">
-        <label for="college">College</label>
-        <select class="form-control" id="college" name="college">
+        <label for="collegeCode">College</label>
+        <select class="form-control" id="collegeCode" name="collegeCode">
             <option value="" disabled selected>--Select Course Code--</option>
             {% for college in colleges %}
-                <option value="{{ college.collegeName }}">{{ college.collegeName }}</option>
+                <option value="{{ college.collegeCode }}">{{ college.collegeCode }}</option>
             {% endfor %}
         </select>
     </div>

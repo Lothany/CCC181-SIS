@@ -70,10 +70,10 @@ class Students(object):
         return full_list
     
 class Courses(object):
-    def __init__(self, courseCode=None, courseName=None, college=None):
+    def __init__(self, courseCode=None, courseName=None, collegeCode=None):
         self.courseCode = courseCode
         self.courseName = courseName
-        self.college = college
+        self.collegeCode = collegeCode
         
     def list():
         cursor = mysql.connection.cursor()
@@ -86,8 +86,8 @@ class Courses(object):
         if self.exists(None):
             return "duplicate"
 
-        sql = f"INSERT INTO courses(courseCode, courseName, college) \
-                VALUES('{self.courseCode}', '{self.courseName}', '{self.college}')"
+        sql = f"INSERT INTO courses(courseCode, courseName, collegeCode) \
+                VALUES('{self.courseCode}', '{self.courseName}', '{self.collegeCode}')"
         cursor.execute(sql)
         mysql.connection.commit()
         

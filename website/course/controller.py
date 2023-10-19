@@ -14,14 +14,14 @@ def add_course():
         data = request.form
         courseCode = data['courseCode']
         courseName = data['courseName']
-        college = data['college']
+        collegeCode = data['collegeCode']
         
         if len(courseCode) < 1:
             flash('Please enter course code', category = 'error')
         elif len(courseName) < 1:
             flash('Please enter course name', category = 'error')
         else:
-            course = models.Courses(courseCode, courseName, college)
+            course = models.Courses(courseCode, courseName, collegeCode)
             exists = course.add()
             if exists == "duplicate":
                 flash('Course with same code already exists!', category = 'error')
