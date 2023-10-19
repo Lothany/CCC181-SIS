@@ -35,8 +35,9 @@
                             </form>
                             <form action="/college/delete" method="post" style="display: inline;">
                                 <input type="hidden" name="collegeCode" value="{{ college[0] }}">
-                                <button class="btn btn-danger" type="button" onclick="confirmDelete()">Delete</button>
+                                <button class="btn btn-danger" type="submit" onclick="confirmDelete()">Delete</button>
                             </form>
+                        
                             
                             <script>
                                 function confirmDelete() {
