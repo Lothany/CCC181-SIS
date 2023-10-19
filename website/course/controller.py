@@ -46,6 +46,12 @@ def edit_course():
         exists = course.edit(trueCourse)
         if exists == "duplicate":
             flash('Course with the same code already exists!', category='error')
+        elif len(courseCode) < 1:
+            flash('Please enter course code', category='error')
+        elif len(courseName) < 1:
+            flash('Please enter course name', category='error')
+        elif collegeCode == "empty":
+            flash('Please choose a college', category='error')
         else:   
             flash('Course edited successfully!', category='success')
             return redirect('/course')

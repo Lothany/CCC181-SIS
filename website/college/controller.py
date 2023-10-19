@@ -40,6 +40,10 @@ def edit_college():
         exists = college.edit(originalCode)
         if exists == "duplicate":
             flash('College with the same code already exists!', category='error')
+        elif len(collegeCode) < 1:
+            flash('Please enter college code', category = 'error')
+        elif len(collegeName) < 1:
+            flash('Please enter college name', category = 'error')
         else:   
             flash('College edited successfully!', category='success')
             return redirect('/college')
