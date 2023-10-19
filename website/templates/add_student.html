@@ -35,36 +35,39 @@
             placeholder = "Smith"
         />
     </div>
-    <div class = "form-group">
-        <label for="course">Course</label>
-        <input 
-            type = "text"
-            class = "form-control"
-            id = "course"
-            name = "course"
-            placeholder = "BS Computer Science"
-        />
+
+    <div class="form-group">
+        <label for="courseCode">Course</label>
+        <select class="form-control" id="courseCode" name="courseCode">
+            <option value="empty">--Select Course--</option>
+            {% for course in courses %}
+                <option value="{{ course.courseCode }}">{{ course.courseCode }}</option>
+            {% endfor %}
+        </select>
     </div>
+
     <div class = "form-group">
-        <label for="year">Year</label>
+        <label for="yearLevel">Year</label>
         <input 
             type = "integer"
             class = "form-control"
-            id = "year"
-            name = "year"
+            id = "yearLevel"
+            name = "yearLevel"
             placeholder = "1"
         />
     </div>
-    <div class = "form-group">
+
+    <div class="form-group">
         <label for="gender">Gender</label>
-        <input 
-            type = "text"
-            class = "form-control"
-            id = "gender"
-            name = "gender"
-            placeholder = "Male"
-        />
+        <select class="form-control" id="gender" name="gender">
+            <option value="empty">--Select Gender--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+        </select>
     </div>
+
     <br />
     <button type ="submit" class="btn btn-primary">Submit</button>
     <a href="/student" class="btn btn-secondary">Cancel</a>

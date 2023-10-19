@@ -55,11 +55,11 @@ class Colleges(object):
         return search_results
 
 class Students(object):
-    def __init__(self, studentID=None, firstName=None, lastName=None, course=None, yearLevel=None, gender=None):
+    def __init__(self, studentID=None, firstName=None, lastName=None, courseCode=None, yearLevel=None, gender=None):
         self.studentID = studentID
         self.firstName = firstName
         self.lastName = lastName
-        self.course = course
+        self.courseCode = courseCode
         self.yearLevel = yearLevel
         self.gender = gender
         
@@ -68,6 +68,24 @@ class Students(object):
         cursor.execute("SELECT * FROM students")
         full_list = cursor.fetchall()
         return full_list
+    
+    def add(self):
+        cursor = mysql.connection.cursor()
+        #if self.exists(None):
+        #    return "duplicate"
+
+        sql = f"INSERT INTO students(studentID, firstName, lastName, courseCode, yearLevel, gender) \
+                VALUES('{self.studentID}', '{self.firstName}', '{self.lastName}', '{self.courseCode}', '{self.yearLevel}', '{self.gender}')"
+        cursor.execute(sql)
+        mysql.connection.commit()
+        
+    @classmethod
+    def list_courses(cls):
+        cursor = mysql.connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM courses")
+        courses = cursor.fetchall()
+        return courses
+    
     
 class Courses(object):
     def __init__(self, courseCode=None, courseName=None, collegeCode=None):
