@@ -37,10 +37,10 @@ def edit_course():
     if request.method == 'POST':
         courseCode = request.form.get('courseCode')
         courseName = request.form.get('courseName')
-        college = request.form.get('college')
+        collegeCode = request.form.get('collegeCode')
         trueCourse = request.args.get('courseCode')
 
-        course = models.Courses(courseCode, courseName, college)
+        course = models.Courses(courseCode, courseName, collegeCode)
         exists = course.edit(trueCourse)
         if exists == "duplicate":
             flash('Course with the same code already exists!', category='error')
@@ -50,7 +50,7 @@ def edit_course():
 
     courseCode = request.args.get('courseCode')
     courseName = request.args.get('courseName')
-    college = request.args.get('college')
+    college = request.args.get('collegeCode')
     collegeList = models.Courses.list_colleges()
     return render_template("edit_course.html", courseCode=courseCode, courseName=courseName, college=college, collegeList = collegeList)
 

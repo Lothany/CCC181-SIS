@@ -96,7 +96,7 @@ class Courses(object):
         if self.exists(trueCourse):
             return "duplicate"
         
-        sql = f"UPDATE courses SET courseCode = '{self.courseCode}', courseName = '{self.courseName}', college = '{self.college}' WHERE courseCode = '{trueCourse}'"
+        sql = f"UPDATE courses SET courseCode = '{self.courseCode}', courseName = '{self.courseName}', collegeCode = '{self.collegeCode}' WHERE courseCode = '{trueCourse}'"
         cursor.execute(sql)
         mysql.connection.commit()
         
