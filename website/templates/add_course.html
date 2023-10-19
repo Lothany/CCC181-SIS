@@ -28,7 +28,7 @@
     <div class="form-group">
         <label for="collegeCode">College</label>
         <select class="form-control" id="collegeCode" name="collegeCode">
-            <option value="" disabled selected>--Select Course Code--</option>
+            <option value="empty">--Select College Code--</option>
             {% for college in colleges %}
                 <option value="{{ college.collegeCode }}">{{ college.collegeCode }}</option>
             {% endfor %}

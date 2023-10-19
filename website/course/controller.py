@@ -8,7 +8,7 @@ def view_course():
     courses = models.Courses.list()
     return render_template("course.html", courses = courses)
 
-@course_bp.route('/course/add', methods = ['GET', 'POST'])
+@course_bp.route('/course/add', methods=['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
         data = request.form
@@ -17,20 +17,22 @@ def add_course():
         collegeCode = data['collegeCode']
         
         if len(courseCode) < 1:
-            flash('Please enter course code', category = 'error')
+            flash('Please enter course code', category='error')
         elif len(courseName) < 1:
-            flash('Please enter course name', category = 'error')
+            flash('Please enter course name', category='error')
+        elif collegeCode == "empty":
+            flash('Please choose a college', category='error')
         else:
             course = models.Courses(courseCode, courseName, collegeCode)
             exists = course.add()
             if exists == "duplicate":
-                flash('Course with same code already exists!', category = 'error')
+                flash('Course with the same code already exists!', category='error')
             else:
-                flash('Course added succesfully!', category = 'success')
-                return redirect ("/course")
+                flash('Course added successfully!', category='success')
+                return redirect('/course')
     
     colleges = models.Courses.list_colleges()
-    return render_template("add_course.html", colleges=colleges)
+    return render_template('add_course.html', colleges=colleges)
 
 @course_bp.route('/course/edit', methods = ['GET', 'POST'])
 def edit_course():
