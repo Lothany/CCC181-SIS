@@ -81,3 +81,20 @@ class Courses(object):
         full_list = cursor.fetchall()
         return full_list
     
+    def add(self):
+        cursor = mysql.connection.cursor()
+        # if self.exists(None):
+        #     return "duplicate"
+
+        sql = f"INSERT INTO courses(courseCode, courseName, college) \
+                VALUES('{self.courseCode}', '{self.courseName}', '{self.college}')"
+        cursor.execute(sql)
+        mysql.connection.commit()
+
+    @classmethod
+    def list_colleges(cls):
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT collegeCode, collegeName FROM colleges")
+        colleges = cursor.fetchall()
+        return colleges
+    

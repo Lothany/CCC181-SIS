@@ -25,16 +25,14 @@
             placeholder = "Bachelor of Science in Computer Science"
         />
     </div>
-    <div class = "form-group">
+    <div class="form-group">
         <label for="college">College</label>
-        <input 
-            type = "text"
-            class = "form-control"
-            id = "college"
-            name = "college"
-            placeholder = "College of Computer Studies"
-        />
+        <select class="form-control" id="college" name="college">
+            <option value="College of Computer Studies">College of Computer Studies</option>
+            <option value="Another College">Another College</option>
+        </select>
     </div>
+    
     <br />
     <button type ="submit" class="btn btn-primary">Submit</button>
     <a href="/course" class="btn btn-secondary">Cancel</a>

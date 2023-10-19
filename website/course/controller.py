@@ -12,5 +12,18 @@ def view_course():
 def add_course():
     if request.method == 'POST':
         data = request.form
-        print (data)
+        courseCode = data['courseCode']
+        courseName = data['courseName']
+        college = data['college']
+        
+        if len(courseCode) < 1:
+            flash('Please enter course code', category = 'error')
+        elif len(courseName) < 1:
+            flash('Please enter course name', category = 'error')
+        else:
+            course = models.Courses(courseCode, courseName, college)
+            course.add()
+            flash('Course added succesfully!', category = 'success')
+            return redirect ("/course")
+    
     return render_template("add_course.html")
