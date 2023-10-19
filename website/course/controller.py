@@ -64,3 +64,9 @@ def delete_course():
         course.delete()
         flash('Course deleted successfully!', category='success')
     return redirect('/course')
+
+@course_bp.route('/course/search', methods=['GET', 'POST'])
+def search_course():
+    query = request.args.get('query')
+    courses = models.Courses.search(query)
+    return render_template("course.html", courses=courses)

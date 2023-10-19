@@ -121,3 +121,11 @@ class Courses(object):
             cursor.execute("SELECT 1 FROM courses WHERE courseCode = %s", (self.courseCode,))
         return cursor.fetchone() is not None
     
+    @classmethod
+    def search(cls, query):
+        cursor = mysql.connection.cursor()
+        sql = f"SELECT * FROM courses WHERE courseCode LIKE '%{query}%' OR courseName LIKE '%{query}%' OR collegeCode LIKE '%{query}%'"
+        cursor.execute(sql)
+        search_results = cursor.fetchall()
+        return search_results
+    
