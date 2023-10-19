@@ -117,6 +117,23 @@ class Students(object):
         sql = f"DELETE FROM students WHERE studentID = '{self.studentID}'"
         cursor.execute(sql)
         mysql.connection.commit()
+        
+    @classmethod
+    def search(cls, query):
+        cursor = mysql.connection.cursor()
+        sql = f"""
+                SELECT *
+                FROM students
+                WHERE studentID LIKE '%{query}%'
+                OR firstName LIKE '%{query}%'
+                OR lastName LIKE '%{query}%'
+                OR courseCode LIKE '%{query}%'
+                OR yearLevel LIKE '%{query}%'
+                OR gender LIKE '%{query}%'
+            """
+        cursor.execute(sql)
+        search_results = cursor.fetchall()
+        return search_results
     
     
 class Courses(object):

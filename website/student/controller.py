@@ -112,3 +112,9 @@ def delete_student():
         student.delete()
         flash('Student deleted successfully!', category='success')
     return redirect('/student')
+
+@student_bp.route('/student/search', methods=['GET', 'POST'])
+def search_student():
+    query = request.args.get('query')
+    students = models.Students.search(query)
+    return render_template("student.html", students=students)
