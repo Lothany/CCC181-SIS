@@ -63,9 +63,28 @@ def edit_student():
         trueStudent = request.args.get('studentID')
         
         student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender)
-        student.edit(trueStudent)
-        flash('Student edited successfully!', category='success')
-        return redirect('/student')
+        exists = student.edit(trueStudent)
+        if exists == "duplicate":
+            flash('Student ID is already taken', category='error')
+        elif len(studentID) < 1:
+            flash('Please enter student ID', category='error')
+        elif len(firstName) < 1:
+            flash('Please enter student first name', category='error')
+        elif len(lastName) < 1:
+            flash('Please enter student last name', category='error')
+        elif courseCode == "empty":
+            flash('Please choose a course', category='error')
+        elif len(yearLevel) < 1:
+            flash('Please enter student year level', category='error')
+        elif not yearLevel.isdigit():
+            flash('Year level must be a number between 1 and 6', category='error')
+        elif not 1 <= int(yearLevel) <= 6:
+            flash('Year level must be between 1 and 6', category='error')
+        elif gender == "empty":
+            flash('Please choose gender', category='error')
+        else:
+            flash('Student edited successfully!', category='success')
+            return redirect('/student')
 
         #exists = student.edit(trueStudent)
         #if exists == "duplicate":

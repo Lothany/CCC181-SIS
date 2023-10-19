@@ -81,8 +81,8 @@ class Students(object):
     
     def edit(self, trueStudent):
         cursor = mysql.connection.cursor()
-        #if self.exists(trueCourse):
-        #    return "duplicate"
+        if self.exists(trueStudent):
+            return "duplicate"
         
         sql = f"UPDATE students SET " \
             f"studentID = '{self.studentID}', " \
