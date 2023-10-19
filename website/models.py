@@ -90,6 +90,15 @@ class Courses(object):
                 VALUES('{self.courseCode}', '{self.courseName}', '{self.college}')"
         cursor.execute(sql)
         mysql.connection.commit()
+        
+    def edit(self, trueCourse):
+        cursor = mysql.connection.cursor()
+        if self.exists(trueCourse):
+            return "duplicate"
+        
+        sql = f"UPDATE courses SET courseCode = '{self.courseCode}', courseName = '{self.courseName}', college = '{self.college}' WHERE courseCode = '{trueCourse}'"
+        cursor.execute(sql)
+        mysql.connection.commit()
 
     @classmethod
     def list_colleges(cls):

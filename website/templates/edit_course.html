@@ -28,7 +28,7 @@
     <div class="form-group">
         <label for="college">College</label>
         <select class="form-control" id="college" name="college">
-            <option value= "college" selected>{{college}}</option>
+            <option value= "{{college}}" selected>{{college}}</option>
             {% for c in collegeList %}
             {% if c.collegeName != college %}
                 <option value="{{ c.collegeName }}">{{ c.collegeName }}</option>
