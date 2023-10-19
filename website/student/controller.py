@@ -62,7 +62,7 @@ def edit_student():
         firstName = request.form.get('firstName')
         lastName = request.form.get('lastName')
         courseCode = request.form.get('courseCode')
-        yearLevel = request.form.get('courseName')
+        yearLevel = request.form.get('yearLevel')
         gender = request.form.get('gender')
         trueStudent = request.args.get('studentID')
         

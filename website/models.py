@@ -87,11 +87,12 @@ class Students(object):
         sql = f"UPDATE students SET " \
             f"studentID = '{self.studentID}', " \
             f"firstName = '{self.firstName}', " \
-            f"lastName = '{self.lastName}' " \
+            f"lastName = '{self.lastName}', " \
             f"courseCode = '{self.courseCode}', " \
             f"yearLevel = '{self.yearLevel}', " \
             f"gender = '{self.gender}' " \
-            f"WHERE courseCode = '{trueStudent}'"
+            f"WHERE studentID = '{trueStudent}'"
+
 
         cursor.execute(sql)
         mysql.connection.commit()
