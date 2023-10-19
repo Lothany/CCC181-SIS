@@ -93,8 +93,8 @@ class Courses(object):
 
     @classmethod
     def list_colleges(cls):
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT collegeCode, collegeName FROM colleges")
+        cursor = mysql.connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM colleges")
         colleges = cursor.fetchall()
         return colleges
     

@@ -26,4 +26,6 @@ def add_course():
             flash('Course added succesfully!', category = 'success')
             return redirect ("/course")
     
-    return render_template("add_course.html")
+    colleges = models.Courses.list_colleges()
+
+    return render_template("add_course.html", colleges=colleges)

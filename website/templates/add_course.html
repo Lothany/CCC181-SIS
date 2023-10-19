@@ -28,10 +28,12 @@
     <div class="form-group">
         <label for="college">College</label>
         <select class="form-control" id="college" name="college">
-            <option value="College of Computer Studies">College of Computer Studies</option>
-            <option value="Another College">Another College</option>
+            {% for college in colleges %}
+                <option value="{{ college.collegeName }}">{{ college.collegeName }}</option>
+            {% endfor %}
         </select>
     </div>
+    
     
     <br />
     <button type ="submit" class="btn btn-primary">Submit</button>
