@@ -35,19 +35,14 @@
                             </form>
                             <form action="/college/delete" method="post" style="display: inline;">
                                 <input type="hidden" name="collegeCode" value="{{ college[0] }}">
-                                <button class="btn btn-danger" type="submit" onclick="confirmDelete()">Delete</button>
+                                <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">Delete</button>
                             </form>
-                        
                             
                             <script>
                                 function confirmDelete() {
-                                    if (window.confirm("Deleting this college will also delete referenced students and courses. \n\nAre you sure you want to delete this college?")) {
-                                        // If the user confirms, submit the form
-                                        document.querySelector('form[action="/college/delete"]').submit();
-                                    }
+                                    return window.confirm("Deleting this college will also delete referenced students and courses. \n\nAre you sure you want to delete this college?");
                                 }
-                            </script>
-                                                      
+                            </script>                                                                                  
                         </td>
                     </tr>
                 {% endfor %}
