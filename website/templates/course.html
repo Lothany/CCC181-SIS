@@ -31,6 +31,9 @@
                         <td>{{ course[2] }}</td>
                         <td>
                             <form action="/course/edit" method="get" style="display: inline;">
+                                <input type="hidden" name="courseCode" value="{{ course[0] }}">
+                                <input type="hidden" name="courseName" value="{{ course[1] }}">
+                                <input type="hidden" name="college" value="{{ course[2] }}">
                                 <button class="btn btn-warning" type="submit">Edit</button>
                             </form>
                             <form action="/course/delete" method="post" style="display: inline;">
