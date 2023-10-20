@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Course Details{% endblock %}
+
+{% block content %}
+
+
+
+<form method = "GET">
+
+    <h3 align = "center"> Course Details </h3>
+    <div class = "form-group">
+        <label for="courseCode">Course Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseCode"
+            name = "courseCode"
+            value="{{ courseCode }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="courseName">Course Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseName"
+            name = "courseName"
+            value="{{ courseName }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="collegeCode">College Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeCode"
+            name = "collegeCode"
+            value="{{ college }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="collegeName">College Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeName"
+            name = "collegeName"
+            value="{{ details }}"
+            readonly
+        />
+    </div>
+    
+    
+    <br />
+    <a href="/course" class="btn btn-secondary">Exit</a>
+</form>
+
+{% endblock%}

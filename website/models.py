@@ -172,6 +172,20 @@ class Courses(object):
         sql = f"DELETE FROM courses WHERE courseCode = '{self.courseCode}'"
         cursor.execute(sql)
         mysql.connection.commit()
+        
+    def read(currentCourse):
+        cursor = mysql.connection.cursor()
+        sql = f"""SELECT colleges.collegeName
+                FROM courses
+                INNER JOIN colleges ON courses.collegeCode = colleges.collegeCode
+                WHERE courses.courseCode = '{currentCourse}'
+                """
+        cursor.execute(sql)
+        college_name = cursor.fetchone()
+        return college_name[0]
+
+
+
 
     @classmethod
     def list_colleges(cls):

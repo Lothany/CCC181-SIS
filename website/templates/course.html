@@ -27,15 +27,27 @@
                     <td>{{ course[1] }}</td>
                     <td>{{ course[2] }}</td>
                     <td>
+                        <form action="/course/read" method="get" style="display: inline;">
+                            <input type="hidden" name="courseCode" value="{{ course[0] }}">
+                            <input type="hidden" name="courseName" value="{{ course[1] }}">
+                            <input type="hidden" name="collegeCode" value="{{ course[2] }}">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                            </button>
+                        </form>
                         <form action="/course/edit" method="get" style="display: inline;">
                             <input type="hidden" name="courseCode" value="{{ course[0] }}">
                             <input type="hidden" name="courseName" value="{{ course[1] }}">
                             <input type="hidden" name="collegeCode" value="{{ course[2] }}">
-                            <button class="btn btn-warning" type="submit">Edit</button>
+                            <button class="btn btn-warning" type="submit">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
                         </form>
                         <form action="/course/delete" method="post" style="display: inline;">
                             <input type="hidden" name="courseCode" value="{{ course[0] }}">
-                            <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">
+                                <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                            </button>
                         </form>
                         
                         <script>
