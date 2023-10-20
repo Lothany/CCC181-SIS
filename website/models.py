@@ -45,6 +45,16 @@ class Colleges(object):
         else:
             cursor.execute("SELECT 1 FROM colleges WHERE collegeCode = %s", (self.collegeCode,))
         return cursor.fetchone() is not None
+    
+    def read(currentCollege):
+        cursor = mysql.connection.cursor()
+        sql = f"""SELECT *
+                FROM courses
+                WHERE collegeCode = "{currentCollege}"
+            """
+        cursor.execute(sql)
+        courses = cursor.fetchall()
+        return courses
 
     @classmethod
     def search(cls, query):
@@ -189,13 +199,12 @@ class Courses(object):
     def read(currentCourse):
         cursor = mysql.connection.cursor()
         sql = f"""SELECT *
-                FROM courses
-                INNER JOIN colleges ON courses.collegeCode = colleges.collegeCode
-                WHERE courses.courseCode = '{currentCourse}'
+                FROM students
+                WHERE courseCode = '{currentCourse}'
                 """
         cursor.execute(sql)
-        details = cursor.fetchone()
-        return details
+        students = cursor.fetchall()
+        return students
 
     @classmethod
     def list_colleges(cls):

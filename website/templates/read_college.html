@@ -3,31 +3,28 @@
 {% block title %}College Details{% endblock %}
 
 {% block content %}
-<form method="POST">
-    <h3 align="center">College Details</h3>
-    <div class="form-group">
-        <label for="collegeName">College Name</label>
-        <input 
-            type="text"
-            class="form-control"
-            id="collegeName"
-            name="collegeName"
-            value="{{ collegeName }}"
-            readonly
-        />
+    
+    <div class="row mt-2">
+        <div class="col">
+            <h3> Courses in {{collegeName}} </h3>
+        </div>
+        <div class="col text-right">
+            <a href="/college" class="btn btn-secondary">Exit</a>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="collegeCode">College Code</label>
-        <input 
-            type="text"
-            class="form-control"
-            id="collegeCode"
-            name="collegeCode"
-            value="{{ collegeCode }}"
-            readonly
-        />
-    </div>    
-    <br />
-    <a href="/college" class="btn btn-secondary">Exit</a>
-</form>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th style="width: 50%;">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course[0] }}</td>
+                <td>{{ course[1] }}</td>
+            </tr>
+        {% endfor %}
 {% endblock %}

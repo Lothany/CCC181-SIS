@@ -56,7 +56,8 @@ def edit_college():
 def read_college():
     collegeCode = request.args.get('collegeCode')
     collegeName = request.args.get('collegeName')
-    return render_template("read_college.html", collegeCode=collegeCode, collegeName=collegeName)
+    courses = models.Colleges.read(collegeCode)
+    return render_template("read_college.html", collegeName=collegeName, courses=courses)
 
 
 @college_bp.route('/college/delete', methods=['POST'])
