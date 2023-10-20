@@ -28,9 +28,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div class="navbar-nav">
             <!-- <a class="nav-item nav-link {% if request.path == '/' %}active{% endif %}" id="home" href="/">Home</a> -->
-            <a class="nav-item nav-link {% if request.path == '/student' %}active{% endif %}" id="student" href="/student">Student</a>
-            <a class="nav-item nav-link {% if request.path == '/course' %}active{% endif %}" id="course" href="/course">Course</a>
-            <a class="nav-item nav-link {% if request.path == '/college' %}active{% endif %}" id="college" href="/college">College</a>
+            <a class="nav-item nav-link {% if '/student' in request.path %}active{% endif %}" id="student" href="/student">Student</a>
+            <a class="nav-item nav-link {% if '/course' in request.path%}active{% endif %}" id="course" href="/course">Course</a>
+            <a class="nav-item nav-link {% if '/college' in request.path%}active{% endif %}" id="college" href="/college">College</a>
           </div>
 
           <div class="ml-auto">
