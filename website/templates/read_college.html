@@ -4,27 +4,33 @@
 
 {% block content %}
     
-    <div class="row mt-2">
-        <div class="col">
-            <h3> Courses in {{collegeName}} </h3>
+<div class="row mt-2">
+    <div class="col-8 offset-2"> 
+        <div class="row">
+            <div class="col">
+                <h3> Courses in {{collegeName}} </h3>
+            </div>
+            <div class="col text-right">
+                <a href="/college" class="btn btn-secondary">Exit</a>
+            </div>
         </div>
-        <div class="col text-right">
-            <a href="/college" class="btn btn-secondary">Exit</a>
-        </div>
-    </div>
     
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Code</th>
-            <th style="width: 50%;">Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for course in courses %}
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{ course[0] }}</td>
-                <td>{{ course[1] }}</td>
+                <th>Code</th>
+                <th>Name</th>
             </tr>
-        {% endfor %}
+            </thead>
+            <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course[0] }}</td>
+                    <td>{{ course[1] }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+    </div>
+</div>
+        
 {% endblock %}
