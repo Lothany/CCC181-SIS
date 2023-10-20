@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}College Details{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">College Details</h3>
+    <div class="form-group">
+        <label for="collegeName">College Name</label>
+        <input 
+            type="text"
+            class="form-control"
+            id="collegeName"
+            name="collegeName"
+            value="{{ collegeName }}"
+            readonly
+        />
+    </div>
+    <div class="form-group">
+        <label for="collegeCode">College Code</label>
+        <input 
+            type="text"
+            class="form-control"
+            id="collegeCode"
+            name="collegeCode"
+            value="{{ collegeCode }}"
+            readonly
+        />
+    </div>    
+    <br />
+    <a href="/college" class="btn btn-secondary">Exit</a>
+</form>
+{% endblock %}

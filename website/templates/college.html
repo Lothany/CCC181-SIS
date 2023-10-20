@@ -28,15 +28,29 @@
                         <td>{{ college[0] }}</td>
                         <td>{{ college[1] }}</td>
                         <td>
+                            <!-- Action Buttons -->
+                        <form action="/college/read" method="get" style="display: inline;">
+                            <input type="hidden" name="collegeCode" value="{{ college[0] }}">
+                            <input type="hidden" name="collegeName" value="{{ college[1] }}">
+                            <button class="btn btn-success" action="/college/read" method="post" style="display: inline;">
+                                <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                            </button>
+                        </form>
                             <form action="/college/edit" method="get" style="display: inline;">
                                 <input type="hidden" name="collegeCode" value="{{ college[0] }}">
                                 <input type="hidden" name="collegeName" value="{{ college[1] }}">
-                                <button class="btn btn-warning" type="submit">Edit</button>
+                                <button class="btn btn-warning" type="submit">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
                             </form>
                             <form action="/college/delete" method="post" style="display: inline;">
                                 <input type="hidden" name="collegeCode" value="{{ college[0] }}">
-                                <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">Delete</button>
+                                <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">
+                                    <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                </button>
                             </form>
+                        </td>
+                    </tr>
                             
                             <script>
                                 function confirmDelete() {

@@ -52,6 +52,12 @@ def edit_college():
     collegeName = request.args.get('collegeName')
     return render_template("edit_college.html", collegeCode=collegeCode, collegeName=collegeName)
 
+@college_bp.route('/college/read', methods=['GET'])
+def read_college():
+    collegeCode = request.args.get('collegeCode')
+    collegeName = request.args.get('collegeName')
+    return render_template("read_college.html", collegeCode=collegeCode, collegeName=collegeName)
+
 
 @college_bp.route('/college/delete', methods=['POST'])
 def delete_college():
