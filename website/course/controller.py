@@ -65,11 +65,9 @@ def edit_course():
 @course_bp.route('/course/read', methods=['GET'])
 def read_college():
     courseCode = request.args.get('courseCode')
-    courseName = request.args.get('courseName')
-    college = request.args.get('collegeCode')
     details = models.Courses.read(courseCode)
     print(details)
-    return render_template("read_course.html", courseCode=courseCode, courseName=courseName, college=college, details = details)
+    return render_template("read_course.html", details = details)
 
 @course_bp.route('/course/delete', methods=['POST'])
 def delete_course():

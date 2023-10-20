@@ -175,14 +175,14 @@ class Courses(object):
         
     def read(currentCourse):
         cursor = mysql.connection.cursor()
-        sql = f"""SELECT colleges.collegeName
+        sql = f"""SELECT *
                 FROM courses
                 INNER JOIN colleges ON courses.collegeCode = colleges.collegeCode
                 WHERE courses.courseCode = '{currentCourse}'
                 """
         cursor.execute(sql)
-        college_name = cursor.fetchone()
-        return college_name[0]
+        details = cursor.fetchone()
+        return details
 
 
 
