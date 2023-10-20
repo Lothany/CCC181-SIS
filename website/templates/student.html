@@ -34,6 +34,12 @@
                 <td>{{ student[4] }}</td>
                 <td>{{ student[5] }}</td>
                 <td>
+                    <form action="/student/read" method="get" style="display: inline;">
+                        <input type="hidden" name="studentID" value="{{ student[0] }}">
+                        <button class="btn btn-success" type="submit">
+                            <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                        </button>
+                    </form>
                     <form action="/student/edit" method="get" style="display: inline;">
                         <input type="hidden" name="studentID" value="{{ student[0] }}">
                         <input type="hidden" name="firstName" value="{{ student[1] }}">
@@ -41,11 +47,15 @@
                         <input type="hidden" name="courseCode" value="{{ student[3] }}">
                         <input type="hidden" name="yearLevel" value="{{ student[4] }}">
                         <input type="hidden" name="gender" value="{{ student[5] }}">
-                        <button class="btn btn-warning" type="submit">Edit</button>
+                        <button class="btn btn-warning" type="submit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
                     </form>
                     <form action="/student/delete" method="post" style="display: inline;">
                         <input type="hidden" name="studentID" value="{{ student[0] }}">
-                        <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">Delete</button>
+                        <button class="btn btn-danger" type="submit" onclick="return confirmDelete();">
+                            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                        </button>
                     </form>
 
                     <script>

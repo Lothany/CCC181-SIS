@@ -96,7 +96,20 @@ class Students(object):
 
         cursor.execute(sql)
         mysql.connection.commit()
-      
+    
+    def read(currentStudent):
+        cursor = mysql.connection.cursor()
+        sql = f"""SELECT *
+                FROM students
+                INNER JOIN courses ON students.courseCode = courses.courseCode
+                INNER JOIN colleges ON courses.collegeCode = colleges.collegeCode
+                WHERE students.studentID = '{currentStudent}'
+            """
+        cursor.execute(sql)
+        details = cursor.fetchone()
+        return details
+
+    
     @classmethod
     def list_courses(cls):
         cursor = mysql.connection.cursor(dictionary=True)
@@ -183,9 +196,6 @@ class Courses(object):
         cursor.execute(sql)
         details = cursor.fetchone()
         return details
-
-
-
 
     @classmethod
     def list_colleges(cls):

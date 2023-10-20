@@ -101,6 +101,12 @@ def edit_student():
         courses = courses
     )
     
+@student_bp.route('/student/read', methods=['GET'])
+def read_college():
+    studentID = request.args.get('studentID')
+    details = models.Students.read(studentID)
+    return render_template("read_student.html", details = details)
+
 @student_bp.route('/student/delete', methods=['POST'])
 def delete_student():
     if request.method == 'POST':

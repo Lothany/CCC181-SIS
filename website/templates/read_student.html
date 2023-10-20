@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Student Details{% endblock %}
+
+{% block content %}
+<form method = "GET">
+    <h3 align = "center"> Student Details </h3>
+    <div class = "form-group">
+        <label for="studentID">Student ID</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "studentID"
+            name = "studentID"
+            value="{{ details[0] }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="firstName">First Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "firstName"
+            name = "firstName"
+            value="{{ details[1] }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="lastName">Last Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "lastName"
+            name = "lastName"
+            value="{{ details[2] }}"
+            readonly
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="yearLevel">Year</label>
+        <input 
+            type = "integer"
+            class = "form-control"
+            id = "yearLevel"
+            name = "yearLevel"
+            value="{{ details[4] }}"
+            readonly
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="gender">Gender</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "gender"
+            name = "gender"
+            value="{{ details[5] }}"
+            readonly
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="courseCode">Course Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseCode"
+            name = "courseCode"
+            value="{{ details[6] }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="courseName">Course Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "courseName"
+            name = "courseName"
+            value="{{ details[7] }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="collegeCode">College Code</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeCode"
+            name = "collegeCode"
+            value="{{ details[8] }}"
+            readonly
+        />
+    </div>
+    <div class = "form-group">
+        <label for="collegeName">College Name</label>
+        <input 
+            type = "text"
+            class = "form-control"
+            id = "collegeName"
+            name = "collegeName"
+            value="{{ details[10] }}"
+            readonly
+        />
+    </div>
+
+    <br />
+    <a href="/student" class="btn btn-secondary">Exit</a>
+</form>
+
+{% endblock%}
