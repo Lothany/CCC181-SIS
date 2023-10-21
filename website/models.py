@@ -144,19 +144,29 @@ class Students(object):
     @classmethod
     def search(cls, query):
         cursor = mysql.connection.cursor()
-        sql = f"""
+        if query.strip().lower() == "male":
+            # If the query is "male," only search for male students
+            sql = """
                 SELECT *
                 FROM students
-                WHERE studentID LIKE '%{query}%'
+                WHERE gender = 'male'
+            """
+        else:
+            # For other queries, search in all relevant fields
+            sql = f"""
+                SELECT *
+                FROM students
+                WHERE (studentID = '%{query}%'
                 OR firstName LIKE '%{query}%'
                 OR lastName LIKE '%{query}%'
                 OR courseCode LIKE '%{query}%'
                 OR yearLevel LIKE '%{query}%'
-                OR gender LIKE '%{query}%'
+                OR gender LIKE '%{query}%')
             """
         cursor.execute(sql)
         search_results = cursor.fetchall()
         return search_results
+
     
     
 class Courses(object):
