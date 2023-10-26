@@ -75,9 +75,15 @@ class Students(object):
         
     def list():
         cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM students")
+        sql = f"""SELECT students.*, colleges.collegeCode
+                    FROM students
+                    INNER JOIN courses ON students.courseCode = courses.courseCode
+                    INNER JOIN colleges ON courses.collegeCode = colleges.collegeCode
+            """
+        cursor.execute(sql)
         full_list = cursor.fetchall()
         return full_list
+        
     
     def add(self):
         cursor = mysql.connection.cursor()

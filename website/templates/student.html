@@ -21,6 +21,7 @@
             <th>Course</th>
             <th>Year</th>
             <th>Gender</th>
+            <th style="width: 20%;">College</th>
             <th style="width: 15%;">Action</th>
         </tr>
         </thead>
@@ -33,6 +34,8 @@
                 <td>{{ student[3] }}</td>
                 <td>{{ student[4] }}</td>
                 <td>{{ student[5] }}</td>
+                <td>{{ student[6] }}</td>
+
                 <td>
                     <form action="/student/read" method="get" style="display: inline;">
                         <input type="hidden" name="studentID" value="{{ student[0] }}">

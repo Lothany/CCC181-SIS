@@ -6,6 +6,8 @@ student_bp = Blueprint('student', __name__)
 @student_bp.route('/')
 @student_bp.route('/student')
 def view_student():
+
+    studentID = request.args.get('studentID')
     students = models.Students.list()
     return render_template("student.html", students = students)
 
