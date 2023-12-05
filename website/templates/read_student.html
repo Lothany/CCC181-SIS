@@ -13,6 +13,18 @@
             <a href="/student" class="btn btn-secondary">Exit</a>
         </div>
     </div>
+
+    <br>
+    <div class="image-container">
+        <div class="image-wrapper" style="width: 200px; height: 200px; position: relative; left: 50%; transform: translateX(-50%); border-radius: 50%;">
+            <label for="file-input" style="cursor: pointer;">
+                <img src="{{ details[6] or url_for('static', filename='img/blank_pfp.jpeg') }}" style="height: 200px; width: 200px; border-radius: 100px;">
+                <div class="overlay-text" style="font-size: 20px;">Upload Photo</div>
+            </label>
+            <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="previewImage(event)" required>
+            <input id="image_url" name="image_url" hidden />
+        </div>
+    </div>
     
     <div class = "form-group">
         <label for="studentID">Student ID</label>
@@ -79,7 +91,7 @@
             class = "form-control"
             id = "courseCode"
             name = "courseCode"
-            value="{{ details[6] }}"
+            value="{{ details[7] }}"
             readonly
         />
     </div>
@@ -90,7 +102,7 @@
             class = "form-control"
             id = "courseName"
             name = "courseName"
-            value="{{ details[7] }}"
+            value="{{ details[8] }}"
             readonly
         />
     </div>
@@ -101,7 +113,7 @@
             class = "form-control"
             id = "collegeCode"
             name = "collegeCode"
-            value="{{ details[8] }}"
+            value="{{ details[9] }}"
             readonly
         />
     </div>
@@ -112,7 +124,7 @@
             class = "form-control"
             id = "collegeName"
             name = "collegeName"
-            value="{{ details[10] }}"
+            value="{{ details[11] }}"
             readonly
         />
     </div>

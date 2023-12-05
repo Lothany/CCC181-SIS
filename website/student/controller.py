@@ -83,9 +83,10 @@ def edit_student():
         courseCode = request.form.get('courseCode')
         yearLevel = request.form.get('yearLevel')
         gender = request.form.get('gender')
+        imageURL = request.form.get('image_url')
         trueStudent = request.args.get('studentID')
         
-        student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender)
+        student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender, imageURL)
         exists = student.edit(trueStudent)
         if exists == "duplicate":
             flash('Student ID is already taken', category='error')
@@ -115,6 +116,7 @@ def edit_student():
     course = request.args.get('courseCode')
     yearLevel = request.args.get('yearLevel')
     gender = request.args.get('gender')
+    imageURL = request.args.get('image_url')
     courses = models.Students.list_courses()
     return render_template(
         "edit_student.html",
@@ -124,7 +126,8 @@ def edit_student():
         course = course,
         yearLevel = yearLevel,
         gender = gender,
-        courses = courses
+        courses = courses,
+        imageURL = imageURL
     )
     
 @student_bp.route('/student/read', methods=['GET'])

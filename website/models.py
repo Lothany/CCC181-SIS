@@ -107,7 +107,8 @@ class Students(object):
             f"lastName = '{self.lastName}', " \
             f"courseCode = '{self.courseCode}', " \
             f"yearLevel = '{self.yearLevel}', " \
-            f"gender = '{self.gender}' " \
+            f"gender = '{self.gender}', " \
+            f"imageURL = '{self.imageURL}' " \
             f"WHERE studentID = '{trueStudent}'"
 
 

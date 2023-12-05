@@ -46,6 +46,7 @@
                         </button>
                     </form>
                     <form action="/student/edit" method="get" style="display: inline;">
+                        <input type="hidden" name="image_url" value="{{ student[6] }}">
                         <input type="hidden" name="studentID" value="{{ student[0] }}">
                         <input type="hidden" name="firstName" value="{{ student[1] }}">
                         <input type="hidden" name="lastName" value="{{ student[2] }}">
