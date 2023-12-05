@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_mysql_connector import MySQL
-from .config import DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOST, SECRET_KEY
+from .config import DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOST, SECRET_KEY, CLOUD_NAME, API_KEY, API_SECRET
 import cloudinary
 
 mysql = MySQL()
@@ -17,10 +17,16 @@ def create_app():
         #BOOTSTRAP_SERVE_LOCAL=BOOTSTRAP_SERVE_LOCAL
     )
     
+    # cloudinary.config(
+    #     cloud_name='dg9adkoyb',
+    #     api_key= '983515472883825',
+    #     api_secret='XGn8SzTJonIGDz59fUo-4MQ-wHA'
+    # )
+    
     cloudinary.config(
-        cloud_name='dg9adkoyb',
-        api_key='983515472883825',
-        api_secret='XGn8SzTJonIGDz59fUo-4MQ-wHA',
+        cloud_name= CLOUD_NAME,
+        api_key= API_KEY,
+        api_secret= API_SECRET
     )
     
     mysql.init_app(app)

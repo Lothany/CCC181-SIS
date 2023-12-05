@@ -12,3 +12,5 @@ __pycache__/
 website/__pycache__/
 
 sis181.sql
+
+.env
