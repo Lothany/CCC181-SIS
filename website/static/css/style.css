@@ -28,7 +28,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50%;
-    border: solid;
+    border: solid #555555;
     overflow: hidden; /* Ensure the image is clipped to the circular shape */
   }
 

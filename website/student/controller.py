@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, flash
+from flask import Blueprint, render_template, request, redirect, flash, jsonify
 import website.models as models
+from cloudinary.uploader import upload
 
 student_bp = Blueprint('student', __name__)
 
@@ -21,6 +22,7 @@ def add_student():
         courseCode = data['courseCode']
         yearLevel = data['yearLevel']
         gender = data['gender']
+        imageURL = data['image_url']
         
         if len(studentID) < 1:
             flash('Please enter student ID', category='error')
@@ -39,7 +41,7 @@ def add_student():
         elif gender == "empty":
             flash('Please choose gender', category='error')
         else:
-            student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender)
+            student = models.Students(studentID, firstName, lastName, courseCode, yearLevel, gender, imageURL)
             exists = student.add()
             if exists == "duplicate":
                 flash('Student ID is already taken', category='error')
@@ -49,6 +51,28 @@ def add_student():
     
     courses = models.Students.list_courses()
     return render_template('add_student.html', courses=courses)
+
+@student_bp.route('/upload_image', methods=['POST'])
+def upload_image():
+    file = request.files.get('upload')
+
+    if not file:
+        print("No file selected.")
+        return
+    
+    # Upload the file to Cloudinary
+    result = upload(file)
+    print(result)
+
+    # Access the uploaded image URL
+    image_url = result['secure_url']
+    print(result['secure_url'])
+
+    # Update the shop's image URL in the database
+    return jsonify({
+        'is_success': True,
+        'url': image_url
+    })
 
 @student_bp.route('/student/edit', methods = ['GET', 'POST'])
 def edit_student():

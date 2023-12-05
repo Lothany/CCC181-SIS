@@ -65,13 +65,14 @@ class Colleges(object):
         return search_results
 
 class Students(object):
-    def __init__(self, studentID=None, firstName=None, lastName=None, courseCode=None, yearLevel=None, gender=None):
+    def __init__(self, studentID=None, firstName=None, lastName=None, courseCode=None, yearLevel=None, gender=None, imageURL=None):
         self.studentID = studentID
         self.firstName = firstName
         self.lastName = lastName
         self.courseCode = courseCode
         self.yearLevel = yearLevel
         self.gender = gender
+        self.imageURL = imageURL
         
     def list():
         cursor = mysql.connection.cursor()
@@ -90,8 +91,8 @@ class Students(object):
         if self.exists(None):
             return "duplicate"
 
-        sql = f"INSERT INTO students(studentID, firstName, lastName, courseCode, yearLevel, gender) \
-                VALUES('{self.studentID}', '{self.firstName}', '{self.lastName}', '{self.courseCode}', '{self.yearLevel}', '{self.gender}')"
+        sql = f"INSERT INTO students(studentID, firstName, lastName, courseCode, yearLevel, gender, imageURL) \
+                VALUES('{self.studentID}', '{self.firstName}', '{self.lastName}', '{self.courseCode}', '{self.yearLevel}', '{self.gender}', '{self.imageURL}')"
         cursor.execute(sql)
         mysql.connection.commit()
     
