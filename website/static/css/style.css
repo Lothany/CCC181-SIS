@@ -1,0 +1,39 @@
+.image-container {
+    position: relative;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    color: #555555;
+    transition: opacity .5s ease;
+    z-index: 1; /* Ensure the text is above the image */
+  }
+  
+  .image-wrapper:hover img {
+    filter: blur(4px); /* Apply blur on hover */
+  }
+  
+  .image-wrapper:hover .overlay-text {
+    opacity: 1;
+  }
+  .image-wrapper {
+    width: 200px;
+    height: 200px; /* Set a fixed size for the circular wrapper */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: solid;
+    overflow: hidden; /* Ensure the image is clipped to the circular shape */
+  }
+
+  .image-wrapper img {
+    width: 100%; /* Make the image fill the entire wrapper */
+    height: 100%; /* Make the image fill the entire wrapper */
+    object-fit: contain; /* Try contain instead of cover */
+  }
