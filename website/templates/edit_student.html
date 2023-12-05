@@ -3,30 +3,19 @@
 {% block title %}Edit Student{% endblock %}
 
 {% block content %}
-<form method = "POST">
-    <h3 align = "center"> Edit Student </h3>
+<form method="POST" enctype="multipart/form-data">
+    <h3 align="center">Edit Student</h3>
     <br>
-    <!--
-        <div class="image-container">
+    <div class="image-container">
         <div class="image-wrapper" style="width: 200px; height: 200px; position: relative; left: 50%; transform: translateX(-50%); border-radius: 50%;">
             <label for="file-input" style="cursor: pointer;">
-                <img src="{{ imageURL or url_for('static', filename='img/blank_pfp.jpeg') }}" style="height: 200px; width: 200px; border-radius: 50%;" id="preview-image" class="circle-image">
+                <img src="{{ imageURL or url_for('static', filename='img/blank_pfp.jpeg') }}" alt="default-pfp" style="height: 200px; width: 200px; border-radius: 50%;" id="preview-image" class="circle-image" value="{{ imageURL }}">
                 <div class="overlay-text" style="font-size: 20px;">Upload Photo</div>
             </label>
-            <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="previewImage(event)" required>
-            <input id="image_url" name="image_url" hidden />
+            <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="previewImage(event)">
+            <input id="image_url" name="image_url" type="hidden" value="{{ imageURL }}">
         </div>
-    -->
-        <div class="image-container">
-            <div class="image-wrapper" style="width: 200px; height: 200px; position: relative; left: 50%; transform: translateX(-50%); border-radius: 50%;">
-                <label for="file-input" style="cursor: pointer;">
-                    <img src="{{ imageURL }}" alt="default-pfp" style="height: 200px; width: 200px; border-radius: 100px;" id="preview-image" class="circle-image"> 
-                    <div class="overlay-text" style="font-size: 20px;">Upload Photo</div>
-                </label>
-                <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="previewImage(event)">
-                <input id="image_url" name="image_url" hidden />
-            </div>
-        </div>
+    </div>
     
     <div class = "form-group">
         <label for="studentID">Student ID</label>
@@ -93,29 +82,32 @@
     </div>
 
     <br />
-    <button type ="submit" class="btn btn-primary submit-button">Edit</button>
+    <button type="submit" class="btn btn-primary submit-button">Edit</button>
     <a href="/student" class="btn btn-secondary">Cancel</a>
 </form>
 
 <script>
     const preview = document.getElementById('preview-image');
-    const submitButton = document.getElementById('submit-button');
+    const submitButton = document.querySelector('.submit-button');
 
-    async function previewImage(event) {    
+    async function previewImage(event) {
         const file = event.target.files[0];
         const formData = new FormData();
-        formData.append("upload", file);
+        formData.append('upload', file);
 
         const response = await fetch("{{ url_for('student.upload_image') }}", {
-            method: "POST",
+            method: 'POST',
             body: formData,
         });
 
         const data = await response.json();
 
+        console.log("Form Data:", formData);
+        console.log("Server Response:", data);
+
         if (data && data.is_success) {
-            const shopImageUrlInput = document.querySelector("[name='image_url']");
-            shopImageUrlInput.value = data.url;
+            const imageUrlInput = document.getElementById('image_url');
+            imageUrlInput.value = data.url;
         }
 
         const reader = new FileReader();
@@ -126,7 +118,6 @@
         };
 
         reader.readAsDataURL(file);
-    
     }
 </script>
 
